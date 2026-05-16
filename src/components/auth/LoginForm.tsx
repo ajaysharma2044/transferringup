@@ -37,21 +37,32 @@ const LoginForm: React.FC<LoginFormProps> = ({ onToggleMode, isSignUp, onLogin }
         throw new Error('Access denied. This portal is restricted.')
       }
 
-      if (isSignUp) {
-        const { error: signUpError } = await supabase.auth.signUp({
-          email,
-          password,
-        })
-        if (signUpError) throw signUpError
-        onLogin()
-      } else {
-        const { error: signInError } = await supabase.auth.signInWithPassword({
-          email,
-          password,
-        })
-        if (signInError) throw signInError
-        onLogin()
+      // Try signing in first
+      const { error: signInError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      })
+
+      if (signInError) {
+        // If user doesn't exist, create the account automatically
+        if (signInError.message.includes('Invalid login credentials')) {
+          const { error: signUpError } = await supabase.auth.signUp({
+            email,
+            password,
+          })
+          if (signUpError) throw signUpError
+          // After signup, sign in
+          const { error: retryError } = await supabase.auth.signInWithPassword({
+            email,
+            password,
+          })
+          if (retryError) throw retryError
+        } else {
+          throw signInError
+        }
       }
+
+      onLogin()
     } catch (error: any) {
       setError(error.message)
     } finally {
