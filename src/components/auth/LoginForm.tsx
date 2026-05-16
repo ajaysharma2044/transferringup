@@ -19,23 +19,39 @@ const LoginForm: React.FC<LoginFormProps> = ({ onToggleMode, isSignUp, onLogin }
   const [error, setError] = useState<string | null>(null)
   const [message, setMessage] = useState<string | null>(null)
 
+  const ALLOWED_EMAIL = 'ajaysharma7843@gmail.com'
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     setLoading(true)
     setError(null)
     setMessage(null)
 
     try {
-      // Demo login - accept any email/password combination
-      if (email && password) {
-        // Simulate loading
-        await new Promise(resolve => setTimeout(resolve, 1000))
-        onLogin()
-        return
+      if (!supabase) {
+        throw new Error('Unable to connect. Please try again later.')
       }
 
-      throw new Error('Please enter both email and password')
+      if (email.toLowerCase() !== ALLOWED_EMAIL) {
+        throw new Error('Access denied. This portal is restricted.')
+      }
+
+      if (isSignUp) {
+        const { error: signUpError } = await supabase.auth.signUp({
+          email,
+          password,
+        })
+        if (signUpError) throw signUpError
+        onLogin()
+      } else {
+        const { error: signInError } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        })
+        if (signInError) throw signInError
+        onLogin()
+      }
     } catch (error: any) {
       setError(error.message)
     } finally {
