@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://transferringup.com/sitemap.xml
+
+# Block access to sensitive files
+Disallow: /.env
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /.git/
+
+# Allow important pages
+Allow: /
+Allow: /#services
+Allow: /#about
+Allow: /#team
+Allow: /#contact
+Allow: /#success
+Allow: /#schools
