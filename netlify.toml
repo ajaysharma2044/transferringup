@@ -1,0 +1,75 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Keep the client login / app routes OUT of Google's index. The login page
+# (/portal) was getting indexed and surfaced as the "Client Portal" sitelink under
+# the brand result — we want Google to feature Results/Reviews/Services instead.
+# X-Robots-Tag is authoritative even for these client-rendered (non-prerendered)
+# routes, and /portal is crawlable (robots only blocks /portal/) so Google will
+# recrawl it, see noindex, and drop it.
+[[headers]]
+  for = "/portal"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+[[headers]]
+  for = "/portal/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+[[headers]]
+  for = "/submit-review"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+# Static media served from the site root (not content-hashed). Long-lived caching
+# so repeat visitors don't re-download the campus art, cutouts, logos, or hero
+# film every visit. Netlify revalidates via ETag on each atomic deploy.
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+[[headers]]
+  for = "/*.mp4"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+[[headers]]
+  for = "/*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+[[headers]]
+  for = "/*.jpeg"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+# Redirects live in public/_redirects (single source of truth):
+#   - SPA fallback only for client-only routes (/portal/*, /consultation-success,
+#     /submit-review). No global /* catch-all, so prerendered pages serve as real
+#     HTML and unmatched URLs fall through to /404.html with a real 404 status.

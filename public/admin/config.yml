@@ -1,0 +1,108 @@
+# ─────────────────────────────────────────────────────────────────────────
+# TransferringUP — Content Studio (Decap CMS)
+#
+# LOCAL EDITING (no accounts needed):
+#   1) npm run dev                  # terminal 1
+#   2) npx decap-server             # terminal 2
+#   3) open http://localhost:5181/admin/index.html
+#      (locally use the full /admin/index.html; in production plain /admin/ works)
+#
+# GOING LIVE (edit from anywhere): see BLOG_CMS.md — push to GitHub, connect
+# Netlify, enable Identity + Git Gateway. The backend below is already set up
+# for that.
+# ─────────────────────────────────────────────────────────────────────────
+
+backend:
+  name: git-gateway
+  branch: main
+
+# When running `npx decap-server`, the editor talks to your local filesystem
+# instead of git — so you can write articles before any of the live wiring.
+local_backend: true
+
+# Uploaded images land here and are referenced as /images/blog/<file>.
+media_folder: "public/images/blog"
+public_folder: "/images/blog"
+
+collections:
+  - name: "blog"
+    label: "Articles"
+    label_singular: "Article"
+    description: "Write, edit, and publish blog articles. Every field maps to the post's SEO."
+    folder: "content/blog"
+    create: true
+    slug: "{{slug}}"
+    preview_path: "blog/{{slug}}"
+    summary: "{{title}}  —  {{date}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+        hint: "The headline + browser tab title. ~50–60 characters reads best in Google."
+
+      - label: "Meta description"
+        name: "description"
+        widget: "text"
+        hint: "The grey snippet under your link in Google. Write 50–160 characters; lead with the benefit + a keyword."
+
+      - label: "Publish date"
+        name: "date"
+        widget: "datetime"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        picker_utc: true
+
+      - label: "Author"
+        name: "author"
+        widget: "string"
+        default: "Ajay"
+
+      - label: "Hero image"
+        name: "image"
+        widget: "image"
+        required: false
+        hint: "Banner shown at the top of the article (and used for social sharing unless you set one below)."
+
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        hint: "Drives 'related articles'. e.g. cornell, ivy league, transfer guide"
+
+      # ── SEO & social ───────────────────────────────────────────────
+      - label: "SEO title override"
+        name: "metaTitle"
+        widget: "string"
+        required: false
+        hint: "Optional. Overrides the <title> tag. If blank, we use '<Title> | TransferringUP Blog'."
+
+      - label: "Focus keyword"
+        name: "focusKeyword"
+        widget: "string"
+        required: false
+        hint: "The phrase you want this article to rank for. Use it in the title, first paragraph, and a heading."
+
+      - label: "Canonical URL"
+        name: "canonical"
+        widget: "string"
+        required: false
+        hint: "Leave blank unless this exact content is published primarily on another URL."
+
+      - label: "Social share image"
+        name: "ogImage"
+        widget: "image"
+        required: false
+        hint: "Image used when the article is shared on social. Defaults to the hero image."
+
+      - label: "Draft (hide from the live site)"
+        name: "draft"
+        widget: "boolean"
+        default: true
+        required: false
+        hint: "On = not published. Turn off when you're ready to go live."
+
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        hint: "The article. Use ## headings — they become the on-page table of contents."

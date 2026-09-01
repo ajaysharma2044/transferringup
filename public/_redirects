@@ -1,0 +1,8 @@
+# SPA fallback ONLY for client-only, non-prerendered routes.
+# All marketing/blog routes are statically prerendered (real HTML files), so
+# unmatched URLs fall through to /404.html with a real 404 status.
+# Do NOT add a global /* -> /index.html catch-all (it masks 404s + shadows pages).
+/portal/*              /index.html   200
+/submit-review         /index.html   200
+/prep                  /index.html   200
+/hq                    /index.html   200

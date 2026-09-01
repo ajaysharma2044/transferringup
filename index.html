@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/logotransferringup.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="TransferringUP, Ajay" />
+    <!-- Per-page robots directive is emitted by the Seo component (index,follow by
+         default; noindex on utility pages like 404). -->
+    <meta name="geo.region" content="US" />
+    <meta name="geo.placename" content="United States" />
+    <meta name="language" content="English" />
+
+    <!-- Premium editorial fonts (Crimson Education / Ivy Coach feel).
+         All four families load in ONE request with only the weights we use, and
+         load NON-render-blocking (preload + media="print" swap) so they no longer
+         sit on the critical path or chain behind the CSS @import. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Booking flow: warm up Calendly before the calendar is ever shown. -->
+    <link rel="preconnect" href="https://assets.calendly.com" />
+    <link rel="preconnect" href="https://calendly.com" />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;1,500;1,600&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,300..700&family=Inter:wght@300;400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;1,500;1,600&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,300..700&family=Inter:wght@300;400;500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;1,500;1,600&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,300..700&family=Inter:wght@300;400;500;600;700&display=swap"
+      />
+    </noscript>
+    <!--
+      Per-page <title>, meta description, canonical, Open Graph, Twitter Card,
+      and JSON-LD structured data are injected at build time (SSG) via the Seo
+      component (vite-react-ssg <Head>). They are present in the static HTML.
+    -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LTQDXNF9YW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      /* Consent defaults must precede config for enhanced conversions. */
+      gtag('consent', 'default', {
+        ad_storage: 'granted',
+        analytics_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted'
+      });
+      gtag('js', new Date());
+      gtag('config', 'G-LTQDXNF9YW');
+      /* Google Ads: same gtag.js loader (never add a second tag), with
+         enhanced conversions on so hashed email/phone rides on conversions. */
+      gtag('config', 'AW-18370032540', { allow_enhanced_conversions: true });
+    </script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    /* Advanced Matching: once anyone has submitted a form here, their hashed
+       email/phone (saved by pixelIdentity.ts) rides on every event they ever
+       send again, so Meta ties the whole visit trail to a real person. */
+    var tuAm = null;
+    try { tuAm = JSON.parse(localStorage.getItem('tu-pixel-am') || 'null'); } catch (e) {}
+    fbq('init', '833203769034453', tuAm || {});
+    fbq('track', 'PageView');
+    </script>
+    <!-- End Meta Pixel Code -->
+
+    <!-- Callix tracking pixel -->
+    <script
+      src="https://app.callix.io/pixel/v1/track.js"
+      data-callix-id="j57cjgwax4gtkb4senszacn7yd8c6ac3"
+      async
+    ></script>
+  </head>
+  <body>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=833203769034453&ev=PageView&noscript=1"
+    /></noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/51254405.js"></script>
+    <!-- End of HubSpot Embed Code -->
+  </body>
+</html>

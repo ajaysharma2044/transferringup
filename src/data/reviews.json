@@ -1,0 +1,46 @@
+{
+  "_note": "Snapshot of approved reviews from Supabase (reviews table, is_approved=true). Refresh with scripts/fetch-reviews.mjs. Rendered statically for SEO/crawler visibility.",
+  "aggregate": { "ratingValue": "5.0", "reviewCount": 4, "bestRating": "5" },
+  "reviews": [
+    {
+      "name": "Samanyu",
+      "schoolFrom": "UC Riverside",
+      "schoolTo": "UVA",
+      "schoolsAccepted": ["UVA", "USC", "NYU", "Michigan", "Boston University", "UT Austin"],
+      "rating": 5,
+      "date": "2026-05-30",
+      "headshot": "/reviews/samanyu.jpg",
+      "text": "Coming out of high school, I had a 3.2 and thought it’d be impossible to transfer in just one year. Even through college, I was only able to maintain a 3.56 at UC Riverside. TransferringUp reassured me and made me feel secure of the entire transfer procedure. From creating an entire narrative for my application to calls every other day, they were very caring. I loved having their phone number and having them accessible 24/7. No matter what time of day or night it was, I could always rely on feedback or questions being answered. When that first NYU acceptance rolled through, it felt like all the weight on my shoulders just dissipated. Relief. Then the other acceptances started rolling through again and again and it felt unbelievable. I’d highly recommend TransferringUp to anyone looking to transfer to their dream school."
+    },
+    {
+      "name": "Adam",
+      "schoolFrom": "Indiana University Bloomington",
+      "schoolTo": "Cornell University",
+      "schoolsAccepted": ["Cornell", "Emory", "UVA", "Michigan", "Boston College", "Boston University", "UGA", "SMU Cox", "Tulane", "FSU"],
+      "rating": 5,
+      "date": "2026-05-30",
+      "headshot": "/reviews/adam.jpg",
+      "text": "TransferringUp really helped me figure out how to properly approach my academic endeavors, as I needed hands-on support from multiple peers throughout the college transfer admission process. Ajay and his team were very successful in ensuring that my college career could outshine what I had accomplished in high school. When I saw that I got into Cornell, I was beyond excited and proud of the work I did, but I give a lot of props to the long phone calls and hours of help I received from the TransferringUp team, and I highly recommend this service to others who want to transfer to T-25s."
+    },
+    {
+      "name": "Brody",
+      "schoolFrom": "Keuka College",
+      "schoolTo": "University of Virginia",
+      "schoolsAccepted": ["UVA (Out of State, Merit Scholarship)", "NYU", "U Miami (Presidential Scholarship)", "Tulane", "SUNY Binghamton"],
+      "rating": 5,
+      "date": "2026-05-29",
+      "headshot": "/reviews/brody.jpg",
+      "text": "Transferring was a process I committed to pretty early on in my first year; the issue was that I had no direction. That’s where Transferring Up and Ajay came in. They guided me through the early stages to the final stages, providing me with a true strategy. Coming out of high school, I had a 3.3 GPA, and in my first semester, I got a 3.5 GPA with a C in Calc 1, which is why I originally thought I wouldn’t be able to transfer. However, during my original call with them, they said it was doable, but that it would be a very intensive process, especially when it came to building up my extracurriculars. Ajay walked me through each step of building up my extracurriculars, which I think is a big reason why it turned out so well. My first big acceptance was Tulane, then NYU, and then U Miami — all targets Ajay established. I was set on U Miami with a merit scholarship until UVA acceptances came out. Ajay told me to check the portal, and to my surprise, I was accepted and awarded a merit scholarship, making UVA the clear choice for my future. Transferring Up has allowed me to attend a school I could only have imagined attending. I couldn’t recommend their services more to any aspiring student who wishes to transfer into a competitive institution."
+    },
+    {
+      "name": "Yash",
+      "schoolFrom": "Drexel University",
+      "schoolTo": "University of Michigan",
+      "schoolsAccepted": ["Michigan", "NYU", "UVA"],
+      "rating": 5,
+      "date": "2026-05-28",
+      "headshot": "/yash.jpg",
+      "text": "Everyone told me transferring to Michigan was impossible with a 3.2 high-school GPA — especially for Computer Science. TransferringUp didn’t just reassure me; they walked me through building my profile from scratch and writing essays that actually told my story instead of listing my stats. They were a call or text away whenever I needed them. When the Michigan acceptance finally came through, it didn’t feel real. I’m now studying Computer Science at the University of Michigan, and without their help I’d still be wondering ‘what if.’"
+    }
+  ]
+}
